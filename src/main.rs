@@ -1,3 +1,16 @@
+struct Cli {
+    pattern: String,
+    path: std::path::PathBuf,
+}
+
 fn main() {
-    println!("Hello, world!");
+    let pattern = std::env::args().nth(1).expect("no pattern given!");
+    let path = std::env::args().nth(2).expect("no path given!");
+
+    let args = Cli {
+        pattern,
+        path: std::path::PathBuf::from(path),
+    };
+
+    print!("pattern: {}, path: {}", args.pattern, args.path.display());
 }
